@@ -4,13 +4,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.ilboudofabrice.pharmainfo.R;
+import com.ilboudofabrice.pharmainfo.database.DatabaseAdapter;
+import com.ilboudofabrice.pharmainfo.database.DatabaseUtil;
 
 public class MenuActivity extends AppCompatActivity {
-    private ImageButton btnAllPharmacies, btnFindScheduledPharmacies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,19 +18,24 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         setWidgets();
+        createUpdateDB();
     }
 
     private void setWidgets() {
-        btnAllPharmacies = (ImageButton) findViewById(R.id.btnPharmacies);
-        btnFindScheduledPharmacies = (ImageButton) findViewById(R.id.btnFindScheduledPharmacies);
     }
 
     public void onShowAllPharmacies(View view){
-//        Intent intent = new Intent();
-//        intent.
+        Intent myIntent = new Intent(MenuActivity.this, ListOfPharmaciesActivity.class);
+        MenuActivity.this.startActivity(myIntent);
     }
 
     public void createUpdateDB(){
-
+        DatabaseAdapter databaseAdapter = new DatabaseAdapter(getApplicationContext());
+        databaseAdapter.openDatabase();
+        if(databaseAdapter.getTotalOfPharmacies() == 0)
+        {
+            DatabaseUtil.initializeDB(getApplicationContext(), databaseAdapter);
+        }
+        databaseAdapter.closeDatabase();
     }
 }

@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.ListOfPharmaciesActivity"
+            android:name=".activities.MenuActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.MenuActivity" />
+        <activity android:name=".activities.ListOfPharmaciesActivity" />
         <activity android:name=".activities.HelpActivity" />
         <activity android:name=".activities.PharmacyInfoActivity" />
         <activity android:name=".activities.FindScheduledPharmaciesActivity"></activity>

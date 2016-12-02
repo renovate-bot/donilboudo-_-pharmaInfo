@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by fabrice on 2016-10-08.
  */
@@ -38,7 +41,8 @@ public class DatabaseAdapter {
         database.insert(DataBaseHelper.TABLE_NAME, null, cv);
     }
 
-    public void selectData() {
+    public List<String> selectData() {
+        List<String> data = new ArrayList<>();
         String[] cols = {DataBaseHelper.COL_ID, DataBaseHelper.COL_NAME};
         Cursor cursor = database.query(DataBaseHelper.TABLE_NAME, cols, null, null, null, null, null);
 
@@ -46,9 +50,17 @@ public class DatabaseAdapter {
         while (cursor.moveToNext()) {
             int index = cursor.getColumnIndex(DataBaseHelper.COL_NAME);
             String name = cursor.getString(index);
-            builder.append(name).append("\n");
+            data.add(name);
+            //builder.append(name).append("\n");
         }
+        return data;
 
-        Toast.makeText(context, builder.toString(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(context, builder.toString(), Toast.LENGTH_LONG).show();
+    }
+
+    public int getTotalOfPharmacies(){
+        String[] cols = {DataBaseHelper.COL_ID};
+        Cursor cursor = database.query(DataBaseHelper.TABLE_NAME, cols, null, null, null, null, null);
+        return cursor.getCount();
     }
 }
