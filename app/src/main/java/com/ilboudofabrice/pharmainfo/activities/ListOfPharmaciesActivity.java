@@ -1,21 +1,15 @@
 package com.ilboudofabrice.pharmainfo.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ilboudofabrice.pharmainfo.R;
 import com.ilboudofabrice.pharmainfo.database.DatabaseAdapter;
+import com.ilboudofabrice.pharmainfo.model.Pharmacy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +18,7 @@ public class ListOfPharmaciesActivity extends AppCompatActivity {
     private ListView lstPharmacies;
     private TextView lblPharmaciesCounter;
     DatabaseAdapter adapter;
-    List<String> data = new ArrayList<>();
+    List<Pharmacy> data = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +44,7 @@ public class ListOfPharmaciesActivity extends AppCompatActivity {
         lblPharmaciesCounter.setText(text);
 
         //show on list view
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.list_black_items, data);
-        lstPharmacies.setAdapter(adapter);
+        lstPharmacies.setAdapter(new CustomPharmaciesListAdapter(this, data, null));
     }
 
     private void setWidgets() {

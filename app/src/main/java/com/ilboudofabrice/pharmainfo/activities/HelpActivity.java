@@ -1,11 +1,11 @@
 package com.ilboudofabrice.pharmainfo.activities;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 
 import com.ilboudofabrice.pharmainfo.R;
 
-public class HelpActivity extends AppCompatActivity {
+public class HelpActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

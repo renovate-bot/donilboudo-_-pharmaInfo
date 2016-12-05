@@ -6,8 +6,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
+import com.ilboudofabrice.pharmainfo.model.Pharmacy;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.ilboudofabrice.pharmainfo.database.DataBaseHelper.*;
 
 /**
  * Created by fabrice on 2016-10-08.
@@ -32,25 +36,31 @@ public class DatabaseAdapter {
 
     public void insertData(int id, String name, String address, String phone, String city) {
         ContentValues cv = new ContentValues();
-        cv.put(DataBaseHelper.COL_ID, id);
-        cv.put(DataBaseHelper.COL_NAME, name);
-        cv.put(DataBaseHelper.COL_ADDRESS, address);
-        cv.put(DataBaseHelper.COL_PHONE, phone);
-        cv.put(DataBaseHelper.COL_CITY, city);
+        cv.put(COL_ID, id);
+        cv.put(COL_NAME, name);
+        cv.put(COL_ADDRESS, address);
+        cv.put(COL_PHONE, phone);
+        cv.put(COL_CITY, city);
 
-        database.insert(DataBaseHelper.TABLE_NAME, null, cv);
+        database.insert(TABLE_NAME, null, cv);
     }
 
-    public List<String> selectData() {
-        List<String> data = new ArrayList<>();
-        String[] cols = {DataBaseHelper.COL_ID, DataBaseHelper.COL_NAME};
-        Cursor cursor = database.query(DataBaseHelper.TABLE_NAME, cols, null, null, null, null, null);
+    public List<Pharmacy> selectData() {
+        List<Pharmacy> data = new ArrayList<>();
+        String[] cols = {COL_ID, COL_NAME, COL_PHONE, COL_ADDRESS, COL_CITY};
+        Cursor cursor = database.query(TABLE_NAME, cols, null, null, null, null, null);
 
-        StringBuilder builder = new StringBuilder();
         while (cursor.moveToNext()) {
-            int index = cursor.getColumnIndex(DataBaseHelper.COL_NAME);
-            String name = cursor.getString(index);
-            data.add(name);
+            Pharmacy pharmacy = new Pharmacy();
+            int index = cursor.getColumnIndex(COL_NAME);
+            pharmacy.setName(cursor.getString(index));
+            index = cursor.getColumnIndex(COL_PHONE);
+            pharmacy.setPhone(cursor.getString(index));
+            index = cursor.getColumnIndex(COL_ADDRESS);
+            pharmacy.setAddress(cursor.getString(index));
+            index = cursor.getColumnIndex(COL_CITY);
+            pharmacy.setCity(cursor.getString(index));
+            data.add(pharmacy);
             //builder.append(name).append("\n");
         }
         return data;
@@ -59,8 +69,8 @@ public class DatabaseAdapter {
     }
 
     public int getTotalOfPharmacies(){
-        String[] cols = {DataBaseHelper.COL_ID};
-        Cursor cursor = database.query(DataBaseHelper.TABLE_NAME, cols, null, null, null, null, null);
+        String[] cols = {COL_ID};
+        Cursor cursor = database.query(TABLE_NAME, cols, null, null, null, null, null);
         return cursor.getCount();
     }
 }
