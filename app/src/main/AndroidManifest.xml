@@ -21,7 +21,8 @@
         <activity android:name=".activities.ListOfPharmaciesActivity" />
         <activity android:name=".activities.HelpActivity" />
         <activity android:name=".activities.PharmacyInfoActivity" />
-        <activity android:name=".activities.FindScheduledPharmaciesActivity"></activity>
+        <activity android:name=".activities.FindScheduledPharmaciesActivity" />
+        <activity android:name=".activities.PharmacyDetailActivity" />
     </application>
 
 </manifest>

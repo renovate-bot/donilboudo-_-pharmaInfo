@@ -44,7 +44,7 @@ public class ListOfPharmaciesActivity extends AppCompatActivity {
         lblPharmaciesCounter.setText(text);
 
         //show on list view
-        lstPharmacies.setAdapter(new CustomPharmaciesListAdapter(this, data, null));
+        lstPharmacies.setAdapter(new CustomPharmaciesListAdapter(this, data));
     }
 
     private void setWidgets() {

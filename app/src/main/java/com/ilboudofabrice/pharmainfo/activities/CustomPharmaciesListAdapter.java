@@ -2,27 +2,25 @@ package com.ilboudofabrice.pharmainfo.activities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ilboudofabrice.pharmainfo.R;
 import com.ilboudofabrice.pharmainfo.model.Pharmacy;
 
 import java.util.List;
 
-public class CustomPharmaciesListAdapter extends BaseAdapter {
+class CustomPharmaciesListAdapter extends BaseAdapter {
     private List<Pharmacy> data;
     private Context context;
-    int[] imageId;
     private static LayoutInflater inflater = null;
 
-    public CustomPharmaciesListAdapter(Activity activity, List<Pharmacy> data, int[] images) {
+    CustomPharmaciesListAdapter(Activity activity, List<Pharmacy> data) {
         // TODO Auto-generated constructor stub
         this.data = data;
         context = activity;
@@ -49,19 +47,19 @@ public class CustomPharmaciesListAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, final View convertView, ViewGroup parent) {
+        final Pharmacy pharmacy = data.get(position);
         View rowView = inflater.inflate(R.layout.pharmacy_list_item, null);
         TextView name = (TextView) rowView.findViewById(R.id.pharmacyName);
-        name.setText(data.get(position).getName());
+        name.setText(pharmacy.getName());
         name.setTextSize(20);
-
-//        TextView phone = (TextView) rowView.findViewById(R.id.pharmacyNumber);
-//        phone.setText(data.get(position).getPhone());
 
         rowView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "You Clicked ", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(context, PharmacyDetailActivity.class);
+                intent.putExtra("Pharmacy", pharmacy);
+                context.startActivity(intent);
             }
         });
 

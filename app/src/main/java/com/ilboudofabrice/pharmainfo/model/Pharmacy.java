@@ -1,9 +1,11 @@
 package com.ilboudofabrice.pharmainfo.model;
 
+import java.io.Serializable;
+
 /**
  * Created by fabrice on 2016-09-29.
  */
-public class Pharmacy {
+public class Pharmacy implements Serializable {
     private int id;
     private String name;
     //private String mainDoctors;

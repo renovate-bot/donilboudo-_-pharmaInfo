@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/pharmacy_logo"
+        android:id="@+id/imageView2" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="@string/lblName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtName"
+            android:layout_weight="0.00"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="25sp" />
+
+        <TextView
+            android:text="@string/lblPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtPhone"
+            android:layout_weight="0.00"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="25sp" />
+
+        <TextView
+            android:text="@string/lblAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtAddress"
+            android:layout_weight="0.00"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="25sp" />
+
+        <TextView
+            android:text="@string/lblCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtCity"
+            android:layout_weight="0.00"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="25sp" />
+    </LinearLayout>
+</LinearLayout>

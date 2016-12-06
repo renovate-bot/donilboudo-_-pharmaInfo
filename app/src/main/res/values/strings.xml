@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">PharmaInfo</string>
     <string name="action_settings">Settings</string>
+    <string name="lblName">Nom:</string>
+    <string name="lblPhone">Telephone:</string>
+    <string name="lblAddress">Addresse:</string>
+    <string name="lblCity">Ville:</string>
+    <string name="title_activity_main2">Main2Activity</string>
 </resources>
