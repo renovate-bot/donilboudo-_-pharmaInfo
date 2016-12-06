@@ -27,6 +27,12 @@ public class MenuActivity extends AppCompatActivity {
         Intent myIntent = new Intent(MenuActivity.this, ListOfPharmaciesActivity.class);
         MenuActivity.this.startActivity(myIntent);
     }
+    
+    
+     public void onHelpAction(View view){
+        Intent myIntent = new Intent(MenuActivity.this, HelpActivity.class);
+        MenuActivity.this.startActivity(myIntent);
+    }
 
     public void createUpdateDB(){
         DatabaseAdapter databaseAdapter = new DatabaseAdapter(getApplicationContext());
